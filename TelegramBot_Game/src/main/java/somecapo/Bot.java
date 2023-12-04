@@ -82,6 +82,7 @@ public class Bot {
             if (data.length < 4) {
                 return;
             }
+            
             Long chatId = Long.parseLong(data[0]);
             String senderName = data[1];
             String senderChose = data[2];
@@ -95,8 +96,8 @@ public class Bot {
                 request = new EditMessageText(chatId, messageId, String.format("%s chose %s and lost to %s, who'd chosen %s", senderName, items.get(senderChose), opponentName, items.get(opponentChose)));
             } else {
                 request = new EditMessageText(chatId, messageId, String.format("%s chose %s and won %s, who'd chosen %s", opponentName, items.get(opponentChose), senderName, items.get(senderChose)));
+                }
             }
-        }
 
         if (request != null) {
             bot.execute(request);
